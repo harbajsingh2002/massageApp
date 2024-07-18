@@ -12,7 +12,9 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "faker": "^6.6.6",
     "mkdirp": "^3.0.1",
+    "otp-generator": "^4.0.1",
     "socket.io": "^4.7.5"
   }
 }

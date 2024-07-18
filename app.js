@@ -54,8 +54,7 @@ const htmlContent = `
       padding: 10px 20px;
       font-size: 16px;
       background-color: #4CAF50;
-      color: white;
-      border: none;
+      color: whitlet      border: none;
       border-radius: 4px;
       cursor: pointer;
     }
@@ -99,9 +98,9 @@ const htmlContent = `
     var socket = io();
     var username = '';
 
-    var loginForm = document.getElementById('login-form');
-    var usernameInput = document.getElementById('username-input');
-    var chatDiv = document.getElementById('chat');
+    let loginForm = document.getElementById('login-form');
+    let usernameInput = document.getElementById('username-input');
+    let chatDiv = document.getElementById('chat');
 
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -114,9 +113,9 @@ const htmlContent = `
       }
     });
 
-    var form = document.getElementById('message-form');
-    var input = document.getElementById('message-input');
-    var messages = document.getElementById('messages');
+    let form = document.getElementById('message-form');
+    let input = document.getElementById('message-input');
+    let messages = document.getElementById('messages');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -161,16 +160,16 @@ let users = {};
 
 io.on('connection', (socket) => {
   console.log('A user connected');
-
+// hendel to join new  user
   socket.on('new user', (username) => {
     users[socket.id] = username;
     io.emit('user joined', username);
   });
-  
+  // hendal the messages
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-
+// hendal if user is dissconnected
   socket.on('disconnect', () => {
     if (users[socket.id]) {
       io.emit('user left', users[socket.id]);
